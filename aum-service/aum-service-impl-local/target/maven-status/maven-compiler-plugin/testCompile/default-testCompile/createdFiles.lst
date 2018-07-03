@@ -1,0 +1,4 @@
+com/aum/platform/ServiceImplLocalDubboApplication.class
+com/aum/platform/modules/fundaccount/LocalFundAccountServiceTest.class
+com/aum/platform/modules/fundaccount/FundAccountMapperTest.class
+com/aum/platform/ServiceImplLocalTestConfiguration.class

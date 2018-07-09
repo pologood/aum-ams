@@ -1,0 +1,62 @@
+= 黄金管家账户系统
+aum-ams
+v1.0, 2018-07-06: SNAPSHOT
+:doctype: docbook
+:toc: left
+:numbered:
+:imagesdir: docs/assets/images
+:sourcedir: ../src/main/java
+:resourcesdir: ../src/main/resources
+:testsourcedir: ../src/test/java
+:source-highlighter: coderay
+:coderay-linenums-mode: inline
+
+== 模块结构
+image::component-structure.png[]
+
+.模块简介
+. aum-ams-entity：实体层
+. aum-ams-dao：数据访问层
+. aum-ams-service-api：服务接口
+. aum-ams-service-local：本地服务，提供服务接口的本地实现
+. aum-ams-service-pingan：平安服务，提供服务接口的平安实现
+. aum-ams-service-facade：门面服务，提供服务接口的组合实现
+. aum-ams-service-amqp：消息队列公共，提供消息队列提供者和消费者都需要使用的公共交换机和路由
+. aum-ams-service-amqp-consumer：消息队列消费者，监听并处理消息
+. aum-ams-service-provider：服务提供者，依赖于本地服务、平安服务、门面服务、消息队列消费者，通过dubbo提供接口
+. aum-ams-admin：后台管理
+. aum-ams-test：测试源，提供测试数据
+. aum-ams-extend-tkmybatis：tk.mybatis扩展
+. aum-ams-tutorial：类库使用教程，提供各个类库的使用示例
+
+== 部署模式
+可以将每个模块单独部署，也可以将所有模块统一部署。
+
+=== 单独部署
+. 启动``ServiceImplLocalProviderApplication``
+. 运行测试``LocalFundAccountServiceConsumerTest``
+. 启动``ServiceImplPingAnProviderApplication``
+. 运行测试``PingAnFundAccountServiceConsumerTest``
+. 启动``ServiceImplExceptionProviderApplication``
+. 运行测试``ExceptionFundAccountServiceConsumerTest``
+. 启动``ServiceImplFacadeProviderApplication``
+. 启动``ServiceAmqpConsumerApplication``
+. 运行测试``FacadeFundAccountServiceConsumerTest``
+
+=== 统一部署
+. 启动``ServiceProviderApplication``
+. 运行测试
+``LocalFundAccountServiceConsumerTest``,
+``PingAnFundAccountServiceConsumerTest``,
+``ExceptionFundAccountServiceConsumerTest``,
+``FacadeFundAccountServiceConsumerTest``
+
+== 实体类生成
+通过**aum-ams-dao**模块的**mybatis-generator**插件生成实体类，
+实体类保存在**aum-ams-entity**模块的``com.aum.ams``目录下，需要自行移动到指定目录下。
+数据源使用``application-datasource.properties``，请确保数据库中存在对应的表。
+
+== 分页
+服务接口的分页使用**spring-data-commons**的``Page``和``Pageable``。
+其实现类需要通过dubbo的java序列化传输。
+与**pagehelper-spring-boot-starter**的分页需要相互转化。

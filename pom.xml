@@ -4,15 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.aum</groupId>
-    <artifactId>aum</artifactId>
+    <groupId>com.aum.ams</groupId>
+    <artifactId>aum-ams</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>0000${name}</name>
     <modules>
-        <module>aum-tutorial</module>
-        <module>aum-extend</module>
-        <module>aum-dao</module>
-        <module>aum-service</module>
+        <module>aum-ams-entity</module>
+        <module>aum-ams-dao</module>
+        <module>aum-ams-service</module>
+        <module>aum-ams-admin</module>
+        <module>aum-ams-extend</module>
+        <module>aum-ams-test</module>
+        <module>aum-ams-tutorial</module>
+        <module>aum-ams-web</module>
     </modules>
 
     <properties>
@@ -20,7 +25,8 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <nexus.url>http://172.16.10.188:8081/nexus/content/repositories</nexus.url>
+        <nexus.url>http://192.168.10.122:8081/nexus/content/repositories</nexus.url>
+        <name>::${project.artifactId}</name>
 
         <!--运行容器-->
         <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
@@ -42,6 +48,7 @@
         <druid.version>1.1.9</druid.version>
         <druid-spring-boot.version>1.1.9</druid-spring-boot.version>
         <h2.version>1.4.196</h2.version>
+        <persistence.version>1.0</persistence.version>
 
         <!-- 相关组件 -->
         <quartz.version>2.3.0</quartz.version>
@@ -50,6 +57,7 @@
         <!-- 工具类 -->
         <commons-lang3.version>3.4</commons-lang3.version>
         <guava.version>19.0</guava.version>
+        <peacetrue.version>1.0-SNAPSHOT</peacetrue.version>
 
         <!-- 本地依赖 -->
         <hjgj.channel.version>1.0-SNAPSHOT</hjgj.channel.version>
@@ -162,6 +170,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper-spring-boot.version}</version>
             </dependency>
@@ -170,6 +183,12 @@
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
             </dependency>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${persistence.version}</version>
+            </dependency>
+
 
             <!--其他组件-->
             <dependency>
@@ -246,6 +265,11 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.2</version>
+            </dependency>
 
             <!--测试-->
             <dependency>
@@ -254,53 +278,93 @@
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-core</artifactId>
+                <version>3.4.2</version>
+                <scope>test</scope>
+            </dependency>
+
 
             <!--本地依赖-->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-extend-tkmybatis</artifactId>
+                <artifactId>aum-ams-entity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-dao</artifactId>
+                <artifactId>aum-ams-extend-tkmybatis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-service-api</artifactId>
+                <artifactId>aum-ams-dao</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-service-impl-facade</artifactId>
+                <artifactId>aum-ams-test</artifactId>
                 <version>${project.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.aum</groupId>
-                <artifactId>aum-service-impl-local</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.aum</groupId>
-                <artifactId>aum-service-impl-pingan</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.aum</groupId>
-                <artifactId>aum-service-amqp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.aum</groupId>
-                <artifactId>aum-service-amqp-consumer</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>aum-ams-service-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-service-provider</artifactId>
+                <artifactId>aum-ams-service-impl-facade</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.aum.ams</groupId>
+                <artifactId>aum-ams-service-impl-local</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aum.ams</groupId>
+                <artifactId>aum-ams-service-impl-pingan</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aum.ams</groupId>
+                <artifactId>aum-ams-service-amqp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aum.ams</groupId>
+                <artifactId>aum-ams-service-amqp-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>aum-ams-service-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>aum-ams-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.peacetrue</groupId>
+                <artifactId>peacetrue-result</artifactId>
+                <version>${peacetrue.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.peacetrue</groupId>
+                <artifactId>peacetrue-result-builder</artifactId>
+                <version>${peacetrue.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.peacetrue</groupId>
+                <artifactId>peacetrue-result-web</artifactId>
+                <version>${peacetrue.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

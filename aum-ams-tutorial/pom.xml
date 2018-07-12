@@ -81,6 +81,11 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
         </dependency>
+        <!-- test at DozerTest -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+        </dependency>
         
     </dependencies>
 

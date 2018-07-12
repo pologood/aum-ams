@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+    </parent>
+
     <groupId>com.aum.ams</groupId>
     <artifactId>aum-ams</artifactId>
     <packaging>pom</packaging>
@@ -29,7 +35,7 @@
         <name>::${project.artifactId}</name>
 
         <!--运行容器-->
-        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
+        <spring-boot.version>1.5.14.RELEASE</spring-boot.version>
 
         <!-- 集群 -->
         <dubbo.version>2.6.2</dubbo.version>
@@ -62,6 +68,10 @@
         <!-- 本地依赖 -->
         <hjgj.channel.version>1.0-SNAPSHOT</hjgj.channel.version>
         <aum.price.api.version>0.0.1-SNAPSHOT</aum.price.api.version>
+
+        <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
+
     </properties>
 
     <dependencies>
@@ -88,14 +98,16 @@
     <dependencyManagement>
         <dependencies>
             <!--spring parent-->
+<!--
             <dependency>
-                <!-- 提供默认版本号，同时会调整依赖，例如：spring-core依赖common-logging，使用此配置后会移除该依赖 -->
+                &lt;!&ndash; 提供默认版本号，同时会调整依赖，例如：spring-core依赖common-logging，使用此配置后会移除该依赖 &ndash;&gt;
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+-->
 
             <!--集群-->
             <dependency>
@@ -270,6 +282,12 @@
                 <artifactId>jsr305</artifactId>
                 <version>3.0.2</version>
             </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.5.1</version>
+            </dependency>
+
 
             <!--测试-->
             <dependency>
@@ -319,22 +337,22 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.aum.ams</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aum-ams-service-impl-local</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.aum.ams</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aum-ams-service-impl-pingan</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.aum.ams</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aum-ams-service-amqp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.aum.ams</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aum-ams-service-amqp-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -363,6 +381,25 @@
                 <groupId>com.github.peacetrue</groupId>
                 <artifactId>peacetrue-result-web</artifactId>
                 <version>${peacetrue.version}</version>
+            </dependency>
+
+            <!--第三方-->
+            <dependency>
+                <groupId>com.aum.third</groupId>
+                <artifactId>aum-third-pingan-open-sdk</artifactId>
+                <version>1.0.6.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aum.third</groupId>
+                <artifactId>aum-third-pingan-sdk</artifactId>
+                <version>1.1.4</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>3.3.4</version>
             </dependency>
 
         </dependencies>

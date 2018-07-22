@@ -341,17 +341,17 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-ams-service-impl-facade</artifactId>
+                <artifactId>aum-ams-service-facade</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-ams-service-impl-local</artifactId>
+                <artifactId>aum-ams-service-local</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-ams-service-impl-pingan</artifactId>
+                <artifactId>aum-ams-service-pingan</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

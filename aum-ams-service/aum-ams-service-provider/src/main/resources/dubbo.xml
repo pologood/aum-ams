@@ -4,9 +4,9 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!--<dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="facadeFundAccountService" group="facade" loadbalance="leastactive"/>-->
-    <!--<dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="localFundAccountService" group="local" loadbalance="leastactive"/>-->
-    <!--<dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="pingAnFundAccountService" group="pingAn" loadbalance="leastactive"/>-->
-    <!--<dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="pingAnFundAccountService" group="third" loadbalance="leastactive"/>-->
+    <dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="localFundAccountService" group="local" loadbalance="leastactive"/>
+    <dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="pingAnFundAccountService" group="pingAn" loadbalance="leastactive"/>
+    <dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="pingAnFundAccountService" group="third" loadbalance="leastactive"/>
+    <dubbo:service interface="com.aum.ams.modules.fundaccount.FundAccountService" ref="facadeFundAccountService" group="facade" loadbalance="leastactive"/>
 
 </beans>

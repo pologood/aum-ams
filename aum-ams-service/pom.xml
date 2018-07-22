@@ -17,10 +17,10 @@
 
     <modules>
         <module>aum-ams-service-api</module>
-        <module>aum-ams-service-impl-facade</module>
-        <module>aum-ams-service-impl-local</module>
-        <module>aum-ams-service-impl-exception</module>
-        <module>aum-ams-service-impl-pingan</module>
+        <module>aum-ams-service-facade</module>
+        <module>aum-ams-service-local</module>
+        <module>aum-ams-service-exception</module>
+        <module>aum-ams-service-pingan</module>
         <module>aum-ams-service-amqp</module>
         <module>aum-ams-service-provider</module>
     </modules>

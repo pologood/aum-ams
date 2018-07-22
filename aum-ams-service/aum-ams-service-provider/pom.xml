@@ -22,15 +22,15 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>aum-ams-service-impl-facade</artifactId>
+            <artifactId>aum-ams-service-facade</artifactId>
         </dependency>
         <dependency>
             <groupId>com.aum.ams</groupId>
-            <artifactId>aum-ams-service-impl-local</artifactId>
+            <artifactId>aum-ams-service-local</artifactId>
         </dependency>
         <dependency>
             <groupId>com.aum.ams</groupId>
-            <artifactId>aum-ams-service-impl-pingan</artifactId>
+            <artifactId>aum-ams-service-pingan</artifactId>
         </dependency>
         <dependency>
             <groupId>com.aum.ams</groupId>

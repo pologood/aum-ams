@@ -1,6 +1,6 @@
 package com.aum.ams.modules.fundaccount;
 
-import com.aum.ams.amqp.AumAmsAmqpConfiguration;
+import com.aum.ams.amqp.AmqpConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -19,7 +19,7 @@ public class FundAccountConsumer {
     @Autowired
     private FundAccountService amqpFundAccountService;
 
-    @RabbitListener(queues = AumAmsAmqpConfiguration.QUEUE_FUND_ACCOUNT_CREATE)
+    @RabbitListener(queues = AmqpConfiguration.QUEUE_FUND_ACCOUNT_CREATE)
     public void createHandler(FundAccountDTO fundAccountVo) {
         logger.info("接收【资金账户创建】消息");
         amqpFundAccountService.add(fundAccountVo);

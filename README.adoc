@@ -21,13 +21,14 @@ image::component-structure.png[]
 . aum-ams-service-local：本地服务，提供服务接口的本地实现
 . aum-ams-service-pingan：平安服务，提供服务接口的平安实现
 . aum-ams-service-facade：门面服务，提供服务接口的组合实现
-. aum-ams-service-amqp：消息队列公共，提供消息队列提供者和消费者都需要使用的公共交换机和路由
-. aum-ams-service-amqp-consumer：消息队列消费者，监听并处理消息
-. aum-ams-service-provider：服务提供者，依赖于本地服务、平安服务、门面服务、消息队列消费者，通过dubbo提供接口
+. aum-ams-service-amqp：消息队列，监听并处理消息
+. aum-ams-service-provider：服务提供者，依赖于本地服务、平安服务、门面服务、消息队列，通过dubbo提供接口
 . aum-ams-admin：后台管理
 . aum-ams-test：测试源，提供测试数据
 . aum-ams-extend-tkmybatis：tk.mybatis扩展
 . aum-ams-tutorial：类库使用教程，提供各个类库的使用示例
+
+将一个项目拆分成众多模块，主要是为了方便分布式部署。
 
 == 部署模式
 可以将每个模块单独部署，也可以将所有模块统一部署。

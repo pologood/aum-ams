@@ -1,8 +1,6 @@
 package com.aum.ams.modules.fundaccount;
 
 import com.alibaba.boot.dubbo.autoconfigure.DubboAutoConfiguration;
-import com.github.peacetrue.result.ResultBuilderAutoConfiguration;
-import com.github.peacetrue.result.ResultWebAutoConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 FundAccountController.class,
                 SpringDataWebAutoConfiguration.class,
                 MessageSourceAutoConfiguration.class,
-                ResultBuilderAutoConfiguration.class,
-                ResultWebAutoConfiguration.class
+//                ResultBuilderAutoConfiguration.class,
+//                ResultWebAutoConfiguration.class
         }
 )
 @AutoConfigureWebMvc

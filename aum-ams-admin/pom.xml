@@ -28,18 +28,16 @@
             <artifactId>aum-ams-service-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aum.ams</groupId>
-            <artifactId>aum-ams-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
+<!--
         <dependency>
             <groupId>com.github.peacetrue</groupId>
             <artifactId>peacetrue-result-web</artifactId>
             <version>${peacetrue.version}</version>
         </dependency>
+-->
 
 
         <dependency>
@@ -59,11 +57,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!--启用不严格检查html-->
+
+        <!--cas-->
         <dependency>
-            <groupId>net.sourceforge.nekohtml</groupId>
-            <artifactId>nekohtml</artifactId>
-            <version>1.9.22</version>
+            <groupId>net.unicon.cas</groupId>
+            <artifactId>cas-client-autoconfig-support</artifactId>
+            <version>1.5.0-GA</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.hjgj</groupId>
+            <artifactId>pms-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

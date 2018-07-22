@@ -16,11 +16,12 @@ public interface FundAccountService {
      * 创建资金账户（开户）
      *
      * @param fundAccountVo 资金账号
-     * @return 账号主键
+     * @return 不确定返回类型，暂定Object
      */
-    default Long add(FundAccountVo fundAccountVo) {
+    default Object add(FundAccountDTO fundAccountVo) {
         throw new UnsupportedOperationException();
     }
+
 
     /**
      * 分页查询资金账户
@@ -29,7 +30,7 @@ public interface FundAccountService {
      * @param pageable   分页参数
      * @return 资金账户集合
      */
-    default Page<FundAccountVo> query(@Nullable FundAccountQueryParam queryParam, Pageable pageable) {
+    default Page<FundAccountDTO> query(@Nullable FundAccountQueryParam queryParam, Pageable pageable) {
         throw new UnsupportedOperationException();
     }
 
@@ -40,7 +41,7 @@ public interface FundAccountService {
      * @param id 主键
      * @return 资金账户
      */
-    default FundAccountVo get(Long id) {
+    default FundAccountDTO get(Long id) {
         throw new UnsupportedOperationException();
     }
 
@@ -50,7 +51,7 @@ public interface FundAccountService {
      * @param fundAccountVo 资金账户
      * @return 受影响的行数
      */
-    default int modify(FundAccountVo fundAccountVo) {
+    default int modify(FundAccountDTO fundAccountVo) {
         throw new UnsupportedOperationException();
     }
 

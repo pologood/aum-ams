@@ -23,7 +23,7 @@ public class ExceptionFundAccountServiceConsumerTest {
     @Test
     public void add() throws Exception {
         AssertUtils.assertException(() -> {
-            exceptionFundAccountService.add(new FundAccountVo());
+            exceptionFundAccountService.add(new FundAccountDTO());
         });
     }
 

@@ -31,18 +31,17 @@ public class LocalFundAccountService implements FundAccountService {
     private FundAccountMapper fundAccountMapper;
 
     @Override
-    public Long add(FundAccountVo fundAccountVo) {
+    public Object add(FundAccountDTO fundAccountVo) {
         logger.info("在本地创建资金账户: {}", fundAccountVo);
         FundAccount fundAccount = VoConvertUtils.convert(fundAccountVo, FundAccount.class);
         fundAccountMapper.insert(fundAccount);
-        fundAccountVo.setId(fundAccount.getId());
         logger.debug("账户主键为：{}", fundAccount.getId());
         return fundAccount.getId();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<FundAccountVo> query(FundAccountQueryParam queryParam, Pageable pageable) {
+    public Page<FundAccountDTO> query(FundAccountQueryParam queryParam, Pageable pageable) {
         logger.info("从本地查询资金账户");
         logger.debug("queryParam: {}, page: {}", queryParam, pageable);
 
@@ -56,21 +55,21 @@ public class LocalFundAccountService implements FundAccountService {
         PageHelperUtils.orderBy(example, pageable);
 
         PageRowBounds pageRowBounds = PageHelperUtils.mapToRowBounds(pageable);
-        List<FundAccountVo> fundAccountVos = VoConvertUtils.convert(
+        List<FundAccountDTO> fundAccountVos = VoConvertUtils.convert(
                 fundAccountMapper.selectByExampleAndRowBounds(example, pageRowBounds),
-                FundAccountVo.class);
+                FundAccountDTO.class);
         return new PageImpl<>(fundAccountVos, pageable, pageRowBounds.getTotal());
     }
 
     @Override
-    public FundAccountVo get(Long id) {
+    public FundAccountDTO get(Long id) {
         logger.info("从本地获取主键为'{}'的资金账户", id);
         FundAccount fundAccount = fundAccountMapper.selectByPrimaryKey(id);
-        return VoConvertUtils.convert(fundAccount, FundAccountVo.class);
+        return VoConvertUtils.convert(fundAccount, FundAccountDTO.class);
     }
 
     @Override
-    public int modify(FundAccountVo fundAccountVo) {
+    public int modify(FundAccountDTO fundAccountVo) {
         logger.info("从本地修改主键为'{}'的资金账户", fundAccountVo.getId());
         FundAccount fundAccount = VoConvertUtils.convert(fundAccountVo, FundAccount.class);
         return fundAccountMapper.updateByPrimaryKeySelective(fundAccount);

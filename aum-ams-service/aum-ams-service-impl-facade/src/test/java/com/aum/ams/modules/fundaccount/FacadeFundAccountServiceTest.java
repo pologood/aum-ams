@@ -27,7 +27,7 @@ public class FacadeFundAccountServiceTest {
 
     @Test
     public void createAccount() throws Exception {
-        facadeFundAccountService.add(new FundAccountVo());
+        facadeFundAccountService.add(new FundAccountDTO());
     }
 
     @Test

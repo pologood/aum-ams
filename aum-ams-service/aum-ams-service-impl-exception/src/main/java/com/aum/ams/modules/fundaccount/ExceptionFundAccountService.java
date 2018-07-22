@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 public class ExceptionFundAccountService implements FundAccountService {
 
     @Override
-    public Long add(FundAccountVo fundAccountVo) {
+    public Object add(FundAccountDTO fundAccountVo) {
         throw new ResultException("500", "服务端错误");
     }
 
     @Override
-    public Page<FundAccountVo> query(FundAccountQueryParam queryParam, Pageable pageable) {
+    public Page<FundAccountDTO> query(FundAccountQueryParam queryParam, Pageable pageable) {
         throw new ResultException("500", "服务端错误");
     }
 

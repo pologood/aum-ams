@@ -23,7 +23,7 @@ public class PingAnFundAccountServiceConsumerTest {
 
     @Test
     public void addAndDelete() throws Exception {
-        FundAccountVo fundAccountVo = new FundAccountVo();
+        FundAccountDTO fundAccountVo = new FundAccountDTO();
         fundAccountVo.setName("name");
         fundAccountVo.setPassword("password");
         pingAnFundAccountService.add(fundAccountVo);
@@ -31,7 +31,7 @@ public class PingAnFundAccountServiceConsumerTest {
 
     @Test
     public void query() throws Exception {
-        Page<FundAccountVo> page = pingAnFundAccountService.query(null, new PageRequest(0, 10));
+        Page<FundAccountDTO> page = pingAnFundAccountService.query(null, new PageRequest(0, 10));
     }
 
 }

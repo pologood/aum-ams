@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.aum.ams</groupId>
-            <artifactId>aum-ams-service-amqp</artifactId>
+            <artifactId>aum-ams-common</artifactId>
         </dependency>
 
         <dependency>

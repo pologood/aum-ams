@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/iview}">
+<head>
+    <title>资金账户</title>
+</head>
+<body>
+<i-Content layout:fragment="content">
+    <Card :bordered="false">
+        <div slot="title">查询条件</div>
+        <div>
+            <i-form ref="formInline" :model="params" :rules="ruleInline" inline>
+                <Form-Item prop="user">
+                    <i-input type="text" v-model="params.name" placeholder="账户名称">
+                        <i-icon type="ios-person-outline" slot="prepend"></i-icon>
+                    </i-input>
+                </Form-Item>
+                <Form-Item prop="password">
+                    <i-input type="password" v-model="params.password" placeholder="账户密码">
+                        <i-icon type="ios-locked-outline" slot="prepend"></i-icon>
+                    </i-input>
+                </Form-Item>
+                <Form-Item>
+                    <i-button type="primary" @click="handleSubmit(params)">查询</i-button>
+                </Form-Item>
+            </i-form>
+        </div>
+    </Card>
+    <br>
+    <Card :bordered="false">
+        <div slot="title">查询结果</div>
+        <div>
+            <i-table :columns="columns" :data="page.content" stripe border></i-table>
+            <div style="margin: 10px;overflow: hidden">
+                <div style="float: right;">
+                    <Page v-show="page.totalElements>0" :total="page.totalElements" :current="page.number+1"></Page>
+                </div>
+            </div>
+        </div>
+    </Card>
+</i-Content>
+</body>
+<script layout:fragment="script">
+    let vue = new Vue({
+        el: '#layout',
+        data: {
+            params: {},
+            ruleInline: {},
+            columns: [
+                {title: 'id', key: 'id'},
+                {title: 'Name', key: 'name'},
+                {title: 'password', key: 'password'},
+                {
+                    title: '操作', key: 'action', width: 150, align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {type: 'primary', size: 'small'},
+                                style: {marginRight: '5px'},
+                                attrs: {href: `/FundAccount/${params.id}`,},
+                                on: {click: () => vue.show(params.index)}
+                            }, 'View'),
+                            h('Button', {
+                                props: {type: 'error', size: 'small'},
+                                on: {click: () => vue.remove(params.index)}
+                            }, 'Delete')
+                        ]);
+                    }
+                }
+            ],
+            page: {number: 0, data: []},
+        },
+        methods: {
+            handleSubmit(params) {
+                console.info('params:', params);
+                this.loading = true;
+                axios.get("/FundAccount", {params: params}).then(response => {
+                    console.info('data:', response.data);
+                    this.loading = false;
+                    this.page = response.data;
+                });
+            },
+            show(index) {
+                window.open(`/FundAccount/view?id=${this.page.content[index].id}`, '_blank');
+                return;
+                this.$Modal.info({
+                    title: 'User Info',
+                    content: `Name：${this.page.content[index].name}<br>Age：${this.page.content[index].age}<br>Address：${this.page.content[index].address}`
+                });
+            },
+            remove(index) {
+                this.page.content.splice(index, 1);
+            }
+        }
+    });
+    vue.handleSubmit();
+</script>
+</html>

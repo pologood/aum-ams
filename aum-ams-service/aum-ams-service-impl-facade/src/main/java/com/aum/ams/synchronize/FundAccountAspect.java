@@ -1,7 +1,7 @@
 package com.aum.ams.synchronize;
 
-import com.aum.ams.AmqpConfiguration;
-import com.aum.ams.modules.fundaccount.FundAccountVo;
+import com.aum.ams.AumAmsAmqpConfiguration;
+import com.aum.ams.modules.fundaccount.FundAccountDTO;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -25,12 +25,12 @@ public class FundAccountAspect {
     private AmqpTemplate amqpTemplate;
 
     @Pointcut("execution(* com.aum.ams.modules.fundaccount.FacadeFundAccountService.add(..))&&args(fundAccountVo)")
-    public void fundAccount_create_pointcut(FundAccountVo fundAccountVo) {}
+    public void fundAccount_create_pointcut(FundAccountDTO fundAccountVo) {}
 
     @After("fundAccount_create_pointcut(fundAccountVo)")
-    public void fundAccount_create_advice(FundAccountVo fundAccountVo) throws Throwable {
+    public void fundAccount_create_advice(FundAccountDTO fundAccountVo) throws Throwable {
         logger.info("发送【资金账户创建】消息");
-        amqpTemplate.convertAndSend(AmqpConfiguration.EXCHANGE_DIRECT, AmqpConfiguration.ROUTING_FUND_ACCOUNT_CREATE, fundAccountVo);
+        amqpTemplate.convertAndSend(AumAmsAmqpConfiguration.EXCHANGE_DIRECT, AumAmsAmqpConfiguration.ROUTING_FUND_ACCOUNT_CREATE, fundAccountVo);
     }
 
 }

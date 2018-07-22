@@ -8,6 +8,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.1.RELEASE</version>
+        <!--<version>2.0.1.RELEASE</version>-->
     </parent>
 
     <groupId>com.aum.ams</groupId>
@@ -16,6 +17,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>0000${name}</name>
     <modules>
+        <module>aum-ams-common</module>
         <module>aum-ams-entity</module>
         <module>aum-ams-dao</module>
         <module>aum-ams-service</module>
@@ -23,7 +25,7 @@
         <module>aum-ams-extend</module>
         <module>aum-ams-test</module>
         <module>aum-ams-tutorial</module>
-        <module>aum-ams-web</module>
+        <module>aum-ams-task</module>
     </modules>
 
     <properties>
@@ -71,6 +73,7 @@
 
         <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
+        <!--<asm.version>6.0</asm.version>-->
 
     </properties>
 
@@ -307,6 +310,11 @@
             <!--本地依赖-->
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>aum-ams-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aum-ams-entity</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -353,7 +361,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>aum-ams-service-amqp-consumer</artifactId>
+                <artifactId>aum-ams-task</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -361,11 +369,7 @@
                 <artifactId>aum-ams-service-provider</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>aum-ams-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
 
             <dependency>
                 <groupId>com.github.peacetrue</groupId>

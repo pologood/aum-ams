@@ -23,20 +23,20 @@ public class FacadeFundAccountServiceConsumerTest {
 
     @Test
     public void add() throws Exception {
-        FundAccountVo fundAccountVo = new FundAccountVo();
+        FundAccountDTO fundAccountVo = new FundAccountDTO();
         fundAccountVo.setName("name");
         fundAccountVo.setPassword("facade");
-        Long id = facadeFundAccountService.add(fundAccountVo);
-        facadeFundAccountService.delete(id);
+        Object id = facadeFundAccountService.add(fundAccountVo);
+        facadeFundAccountService.delete((Long) id);
     }
 
     @Test
     public void query() throws Exception {
-        Page<FundAccountVo> fundAccountVos = facadeFundAccountService.query(
+        Page<FundAccountDTO> fundAccountVos = facadeFundAccountService.query(
                 new FundAccountQueryParam(),
                 new PageRequest(0, 1)
         );
-        
+
     }
 
 

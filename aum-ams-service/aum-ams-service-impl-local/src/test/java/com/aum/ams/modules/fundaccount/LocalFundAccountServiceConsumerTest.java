@@ -24,17 +24,17 @@ public class LocalFundAccountServiceConsumerTest {
 
     @Test
     public void addAndDelete() throws Exception {
-        FundAccountVo fundAccountVo = new FundAccountVo();
+        FundAccountDTO fundAccountVo = new FundAccountDTO();
         fundAccountVo.setName("name");
         fundAccountVo.setPassword("password");
-        Long id = localFundAccountService.add(fundAccountVo);
+        Object id = localFundAccountService.add(fundAccountVo);
         //集成测试，无法自动回滚
-        localFundAccountService.delete(id);
+        localFundAccountService.delete((Long) id);
     }
 
     @Test
     public void query() throws Exception {
-        Page<FundAccountVo> page = localFundAccountService.query(null, new PageRequest(0, 10));
+        Page<FundAccountDTO> page = localFundAccountService.query(null, new PageRequest(0, 10));
         Assert.assertEquals(FundAccountTest.ALL.size(), page.getTotalElements());
     }
 

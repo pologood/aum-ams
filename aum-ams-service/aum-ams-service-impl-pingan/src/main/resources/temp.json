@@ -1,0 +1,32 @@
+{
+  "TxnReturnCode": "000000",
+  "TotalNum": "1",
+  "ResultNum": "1",
+  "TranInfoArray": [
+    {
+      "PayeeAcctNo": "6217850206668503199",
+      "CorpId": "Q000400269",
+      "ReturnCode": "0000",
+      "ReturnMsg": "交易成功",
+      "TranDate": "20180517",
+      "CounterpartyBranchId": "",
+      "PayeeAcctName": "汤建梅",
+      "CorpSeqNo": "H222852018051712345678",
+      "PayerAcctNo": "15000092457926",
+      "CounterpartyAcctNo": "15000092457926",
+      "CorpTranDate": "20180517",
+      "PayerAcctName": "测试账户一",
+      "TotalOccrAmt": "10",
+      "OtherBranchId": "0201",
+      "BussTypeNo": "100160",
+      "CounterpartyAcctName": "测试账户一",
+      "CorpTranTime": "174353",
+      "DealStatus": "1",
+      "ActualCommision": "2",
+      "REMARK": "",
+      "TranTime": "174340"
+    }
+  ],
+  "TxnReturnMsg": "交易成功",
+  "CnsmrSeqNo": "8401051805170000347225"
+}

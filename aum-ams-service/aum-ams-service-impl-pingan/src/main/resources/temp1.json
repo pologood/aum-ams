@@ -1,0 +1,23 @@
+{
+  "ActualCommision": "2",
+  "BussTypeNo": "100160",
+  "CorpId": "Q000400269",
+  "CorpSeqNo": "H222852018051712345678",
+  "CorpTranDate": "20180517",
+  "CorpTranTime": "174353",
+  "CounterpartyAcctName": "测试账户一",
+  "CounterpartyAcctNo": "15000092457926",
+  "CounterpartyBranchId": "",
+  "DealStatus": "1",
+  "OtherBranchId": "0201",
+  "PayeeAcctName": "汤建梅",
+  "PayeeAcctNo": "6217850206668503199",
+  "PayerAcctName": "测试账户一",
+  "PayerAcctNo": "15000092457926",
+  "REMARK": "",
+  "ReturnCode": "0000",
+  "ReturnMsg": "交易成功",
+  "TotalOccrAmt": "10",
+  "TranDate": "20180517",
+  "TranTime": "174340"
+}

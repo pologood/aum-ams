@@ -19,40 +19,40 @@ public class FundAccountController {
 
     @GetMapping("/list")
     public String list() {
-        return "/FundAccount/list";
+        return "FundAccount/list";
     }
 
-    @GetMapping({"/detail", "/add", "/modify"})
+    @GetMapping({"/detail", "/view", "/add", "/modify"})
     public String detail() {
-        return "/FundAccount/detail";
+        return "FundAccount/detail";
     }
 
     @ResponseBody
     @PostMapping
-    public void add(FundAccountVo fundAccountVo) {
+    public void add(FundAccountDTO fundAccountVo) {
         fundAccountService.add(fundAccountVo);
     }
 
     @ResponseBody
     @GetMapping
-    public Page<FundAccountVo> query(FundAccountQueryParam queryParam, Pageable pageable) {
+    public Page<FundAccountDTO> query(FundAccountQueryParam queryParam, Pageable pageable) {
         return fundAccountService.query(queryParam, pageable);
     }
 
     @ResponseBody
     @GetMapping("/{id}")
-    public FundAccountVo get(@PathVariable Long id) {
+    public FundAccountDTO get(@PathVariable Long id) {
         return fundAccountService.get(id);
     }
 
     @ResponseBody
     @PutMapping
-    public int modify(FundAccountVo fundAccountVo) {
+    public int modify(FundAccountDTO fundAccountVo) {
         return fundAccountService.modify(fundAccountVo);
     }
 
     @ResponseBody
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public int delete(@PathVariable Long id) {
         return fundAccountService.delete(id);
     }

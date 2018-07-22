@@ -24,14 +24,14 @@ public class FacadeFundAccountService implements FundAccountService {
     private FundAccountService thirdFundAccountService;
 
     @Override
-    public Long add(FundAccountVo fundAccountVo) {
+    public Object add(FundAccountDTO fundAccountVo) {
         logger.info("创建资金账户");
         return thirdFundAccountService.add(fundAccountVo);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<FundAccountVo> query(FundAccountQueryParam queryParam, Pageable pageable) {
+    public Page<FundAccountDTO> query(FundAccountQueryParam queryParam, Pageable pageable) {
         return localFundAccountService.query(queryParam, pageable);
     }
 

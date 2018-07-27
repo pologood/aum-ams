@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/FundAccount")
 public class FundAccountController {
 
-    @Reference(group = "local")
     private FundAccountService fundAccountService;
 
     @GetMapping("/list")
@@ -30,8 +29,8 @@ public class FundAccountController {
 
     @ResponseBody
     @PostMapping
-    public void add(FundAccountDTO fundAccountVo) {
-        fundAccountService.add(fundAccountVo);
+    public Object add(FundAccountDTO fundAccountVo) {
+        return fundAccountService.add(fundAccountVo);
     }
 
     @ResponseBody
@@ -58,4 +57,15 @@ public class FundAccountController {
         return fundAccountService.delete(id);
     }
 
+    @ResponseBody
+    @DeleteMapping
+    public int delete(@RequestParam("id") Long[] id) {
+        return fundAccountService.delete(id);
+    }
+
+
+    @Reference(group = "local")
+    public void setFundAccountService(FundAccountService fundAccountService) {
+        this.fundAccountService = fundAccountService;
+    }
 }

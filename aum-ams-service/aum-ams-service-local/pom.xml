@@ -30,6 +30,15 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.aum.ams</groupId>
+            <artifactId>aum-ams-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+        </dependency>
+
         <!--日志-->
         <dependency>
             <groupId>ch.qos.logback</groupId>

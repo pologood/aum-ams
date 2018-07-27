@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication
 @ImportResource("classpath:/dubbo.xml")
-public class ServiceImplExceptionProviderApplication {
+public class ServiceFacadeApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceImplExceptionProviderApplication.class, args);
+        SpringApplication.run(ServiceFacadeApplication.class, args);
     }
 }

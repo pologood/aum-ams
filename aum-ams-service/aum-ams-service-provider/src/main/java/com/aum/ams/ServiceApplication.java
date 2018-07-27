@@ -20,15 +20,15 @@ import static org.springframework.boot.context.config.ConfigFileApplicationListe
 @SpringBootApplication
 @Import({TkMybatisConfiguration.class})
 @ImportResource("classpath:/dubbo.xml")
-public class ServiceProviderApplication {
+public class ServiceApplication {
 
-    private static Logger logger = LoggerFactory.getLogger(ServiceProviderApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(ServiceApplication.class);
 
     public static void main(String[] args) {
         EnvironmentUtils.setConventionalAdditionalConfigLocation("aum-ams-service-provider");
 //        EnvironmentUtils.setAdditionalConfigLocation("classpath:template/");// 用于外部文件测试
         logger.info("{}: {}", CONFIG_LOCATION_PROPERTY, EnvironmentUtils.getConfigLocation());
-        ConfigurableApplicationContext context = SpringApplication.run(ServiceProviderApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(ServiceApplication.class, args);
 //        Environment bean = context.getBean(Environment.class);
 //        String property = bean.getProperty("info.app.java.source");
 //        System.out.println(property);

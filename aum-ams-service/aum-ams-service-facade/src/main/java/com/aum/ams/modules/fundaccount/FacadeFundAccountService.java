@@ -36,7 +36,7 @@ public class FacadeFundAccountService implements FundAccountService {
     }
 
     @Override
-    public int delete(Long id) {
+    public int delete(Long... id) {
         return localFundAccountService.delete(id);
     }
 }

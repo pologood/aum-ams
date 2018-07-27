@@ -61,7 +61,7 @@ public interface FundAccountService {
      * @param id 主键
      * @return 受影响的行数
      */
-    default int delete(Long id) {
+    default int delete(Long... id) {
         throw new UnsupportedOperationException();
     }
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">标题</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">黄金管家</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <!--<script src="http://vuejs.org/js/vue.min.js"></script>
@@ -10,103 +10,57 @@
     <script src="http://unpkg.com/iview/dist/iview.min.js"></script>-->
 
     <script th:src="@{/js/vue.min.js}"></script>
-    <script th:src="@{/axiso/axios.min.js}"></script>
+    <script th:src="@{/js/qs.min.js}"></script>
+    <script th:src="@{/js/axios.min.js}"></script>
+    <script th:src="@{/js/lodash.js}"></script>
     <link th:href="@{/iview/styles/iview.css}" rel="stylesheet"/>
-    <script th:src="@{/iview/iview.min.js}"></script>
-    <style>
-        .layout {
-            border: 1px solid #d7dde4;
-            background: #f5f7f9;
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .layout-logo {
-            width: 100px;
-            height: 30px;
-            background: #5b6270;
-            border-radius: 3px;
-            float: left;
-            position: relative;
-            top: 15px;
-            left: 20px;
-        }
-
-        .layout-nav {
-            width: 420px;
-            margin: 0 auto;
-            margin-right: 20px;
-        }
-    </style>
+    <link th:href="@{/css/layout.css}" rel="stylesheet"/>
+    <script th:src="@{/iview/iview.js}"></script>
+    <script th:src="@{/ams/async-validator.messages_zh.js}"></script>
+    <script th:src="@{/ams/view.js}"></script>
+    <script th:src="@{/ams/common.js}"></script>
 </head>
 <body>
-<div class="layout" id="layout">
-    <Layout>
-        <!--<Header><br>Header</Header>-->
-        <Layout :style="{padding: '0 50px'}">
-            <Sider hide-trigger :style="{background: '#fff'}">
-                <i-menu active-name="1-2" theme="light" width="auto" :open-names="['1']" th:size="${#lists.size(session.menus)}">
-                    <Submenu th:each="submenu:${session.menus}" th:name="${submenu['id']}">
-                        <template slot="title">
-                            <Icon type="ios-analytics"></Icon>
-                            <!--<span th:text="${submenu['title']}"></span>-->
-                            <th:block th:text="${submenu['title']}"/>
-                        </template>
-                        <Menu-Item th:each="menu:${submenu['children']}" th:name="${menu['id']}">
-                            <a th:text="${menu['title']}" th:href="'/'+${menu['href']}" target="_blank"></a>
+<div id="layout" class="layout">
+    <div class="layout">
+        <Layout>
+            <Header>
+                <i-Menu mode="horizontal" theme="dark" active-name="1">
+                    <div class="layout-logo"></div>
+                    <div class="layout-nav">
+                        <Menu-Item name="1">
+                            <Icon type="ios-navigate"></Icon>
+                            Item 1
                         </Menu-Item>
-                    </Submenu>
-                </i-menu>
-            </Sider>
-            <Layout :style="{padding: '0 24px 24px'}">
-                <Breadcrumb :style="{margin: '24px 0'}">
-                    <Breadcrumb-Item>Home</Breadcrumb-Item>
-                    <Breadcrumb-Item>Components</Breadcrumb-Item>
-                    <Breadcrumb-Item>Layout</Breadcrumb-Item>
-                </Breadcrumb>
-                <Content layout:fragment="content" :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-                    <!--
-                    <Card :bordered="false">
-                        <div slot="title">查询条件</div>
-                        <div>
-                            <i-form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-                                <Form-Item prop="user">
-                                    <i-input type="text" v-model="formInline.user" placeholder="Username">
-                                        <i-icon type="ios-person-outline" slot="prepend"></i-icon>
-                                    </i-input>
-                                </Form-Item>
-                                <Form-Item prop="password">
-                                    <i-input type="password" v-model="formInline.password" placeholder="Password">
-                                        <i-icon type="ios-locked-outline" slot="prepend"></i-icon>
-                                    </i-input>
-                                </Form-Item>
-                                <Form-Item>
-                                    <i-button type="primary" @click="handleSubmit('formInline')">Signin</i-button>
-                                </Form-Item>
-                            </i-form>
-                        </div>
-                    </Card>
-                    <br>
-                    <Card :bordered="false">
-                        <div slot="title">查询结果</div>
-                        <div>
-                            <i-table :columns="columns1" :data="data1"></i-table>
-                            <div style="margin: 10px;overflow: hidden">
-                                <div style="float: right;">
-                                    <Page :total="100" :current="1"></Page>
-                                </div>
-                            </div>
-                        </div>
-                    </Card>
-                -->
-                </Content>
+                        <Menu-Item name="2">
+                            <Icon type="ios-keypad"></Icon>
+                            Item 2
+                        </Menu-Item>
+                        <Menu-Item name="3">
+                            <Icon type="ios-analytics"></Icon>
+                            Item 3
+                        </Menu-Item>
+                        <Menu-Item name="4">
+                            <Icon type="ios-paper"></Icon>
+                            Item 4
+                        </Menu-Item>
+                    </div>
+                </i-Menu>
+            </Header>
+            <Layout>
+                <Sider hide-trigger :style="{background: '#fff'}" th:insert="fragments/menu :: menu"></Sider>
+                <Layout :style="{padding: '0 24px 24px'}">
+                    <Breadcrumb :style="{margin: '24px 0'}">
+                        <Breadcrumb-Item th:each="title:${titles}" th:text="${title}"></Breadcrumb-Item>
+                    </Breadcrumb>
+                    <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}" layout:fragment="content"></Content>
+                </Layout>
             </Layout>
-
         </Layout>
-        <!--<Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>-->
-    </Layout>
+    </div>
 </div>
-<script layout:fragment="script"></script>
+<script layout:fragment="script">
+    let vue = new Vue({el: '#layout'});
+</script>
 </body>
 </html>

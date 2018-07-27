@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<i-menu theme="light" width="auto"
+        th:fragment="menu"
+        th:active-name="${activeName}"
+        th:v-bind:open-names="${openNames}"
+        th:size="${#lists.size(session.menus)}">
+    <Submenu th:each="submenu:${session.menus}" th:name="${submenu['title']}">
+        <template slot="title">
+            <Icon type="ios-analytics"></Icon>
+            <th:block th:text="${submenu['title']}"/>
+        </template>
+        <Menu-Item th:each="menu:${submenu['children']}" th:name="${menu['title']}">
+            <span th:text="${menu['title']}" th:@click="'window.open(\'/'+${menu['href']}+'\')'"></span>
+        </Menu-Item>
+    </Submenu>
+</i-menu>
+</body>
+</html>

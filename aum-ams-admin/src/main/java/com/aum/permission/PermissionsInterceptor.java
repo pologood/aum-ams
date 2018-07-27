@@ -17,9 +17,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -61,9 +60,44 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             request.getSession().setAttribute(SessionUtil.SessionSysteMenus, menuList);
         }
         //判断权限，没有权限，进入没有权限页面
-
+        setCurrentMenu(request);
         return true;
 
+    }
+
+    private void setCurrentMenu(HttpServletRequest request) {
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> menus = (List<Map<String, Object>>) request.getSession().getAttribute("menus");
+        if (menus == null) return;
+        String servletPath = request.getServletPath();
+        List<Map<String, Object>> target = new ArrayList<>(2);
+        request.setAttribute("openNames", "['产品管理']");
+        request.setAttribute("activeName", "产品列表");
+        request.setAttribute("titles", Arrays.asList("产品管理", "产品列表"));
+        if (findByHref(menus, servletPath, target)) {
+            List<String> titles = target.stream().map(map -> (String) map.get("title")).collect(Collectors.toList());
+            Collections.reverse(target);
+            request.setAttribute("openNames", "['" + titles.get(0) + "']");
+            request.setAttribute("activeName", titles.get(1));
+            request.setAttribute("titles", titles);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private boolean findByHref(List<Map<String, Object>> source, String href, List<Map<String, Object>> target) {
+        for (Map<String, Object> menu : source) {
+            List<Map<String, Object>> children = (List<Map<String, Object>>) menu.get("children");
+            if (children != null) {
+                if (findByHref(children, href, target)) {
+                    target.add(menu);
+                    return true;
+                }
+            } else if (href.equals(menu.get("href"))) {
+                target.add(menu);
+                return true;
+            }
+        }
+        return false;
     }
 
     //菜单树形结构

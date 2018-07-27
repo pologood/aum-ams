@@ -30,11 +30,6 @@ public class ServicePingAnConfiguration {
     }
 
     @Bean
-    public Mapper mapper() {
-        return new DozerBeanMapper();
-    }
-
-    @Bean
     public ObjectMapper pingAnObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);

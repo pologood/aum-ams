@@ -34,18 +34,18 @@ image::component-structure.png[]
 可以将每个模块单独部署，也可以将所有模块统一部署。
 
 === 单独部署
-. 启动``ServiceImplLocalProviderApplication``
+. 启动``ServiceLocalApplication``
 . 运行测试``LocalFundAccountServiceConsumerTest``
-. 启动``ServiceImplPingAnProviderApplication``
+. 启动``ServicePingAnApplication``
 . 运行测试``PingAnFundAccountServiceConsumerTest``
-. 启动``ServiceImplExceptionProviderApplication``
+. 启动``ServiceExceptionApplication``
 . 运行测试``ExceptionFundAccountServiceConsumerTest``
-. 启动``ServiceImplFacadeProviderApplication``
+. 启动``ServiceFacadeApplication``
 . 启动``ServiceAmqpConsumerApplication``
 . 运行测试``FacadeFundAccountServiceConsumerTest``
 
 === 统一部署
-. 启动``ServiceProviderApplication``
+. 启动``ServiceApplication``
 . 运行测试
 ``LocalFundAccountServiceConsumerTest``,
 ``PingAnFundAccountServiceConsumerTest``,

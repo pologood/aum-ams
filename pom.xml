@@ -386,6 +386,17 @@
                 <artifactId>peacetrue-result-web</artifactId>
                 <version>${peacetrue.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.peacetrue</groupId>
+                <artifactId>peacetrue-result-exception</artifactId>
+                <version>${peacetrue.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.peacetrue</groupId>
+                <artifactId>peacetrue-result-exception-support</artifactId>
+                <version>${peacetrue.version}</version>
+            </dependency>
+
 
             <!--第三方-->
             <dependency>

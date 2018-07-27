@@ -14,8 +14,8 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @Import({TkMybatisConfiguration.class})
 @ImportResource("classpath:/dubbo.xml")
-public class ServiceImplLocalProviderApplication {
+public class ServiceLocalApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceImplLocalProviderApplication.class, args);
+        SpringApplication.run(ServiceLocalApplication.class, args);
     }
 }

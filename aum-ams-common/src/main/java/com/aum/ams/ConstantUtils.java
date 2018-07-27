@@ -1,11 +1,11 @@
 package com.aum.ams;
 
 /**
- * 多个模块都涉及的公共信息
+ * 常量定义
  *
  * @author xiayx
  */
-public abstract class Common {
+public abstract class ConstantUtils {
 
     /** redis key: 平安流水号中的序号 */
     public static final String

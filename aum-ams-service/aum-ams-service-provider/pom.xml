@@ -18,6 +18,10 @@
         <!--本地依赖-->
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>aum-ams-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>aum-ams-service-api</artifactId>
         </dependency>
         <dependency>
@@ -25,21 +29,26 @@
             <artifactId>aum-ams-service-facade</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aum.ams</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>aum-ams-service-local</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aum.ams</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>aum-ams-service-pingan</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aum.ams</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>aum-ams-service-amqp</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aum.ams</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>aum-ams-task</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>aum-ams-test</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,10 +81,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.aum.ams</groupId>
-            <artifactId>aum-ams-test</artifactId>
         </dependency>
     </dependencies>
 
